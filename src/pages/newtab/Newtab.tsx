@@ -16,7 +16,7 @@ const Newtab = () => {
       .from("bookmarks")
       .select("id,name,url")
       .then((res) => {
-        const { data: bookmarks, error } = res;
+        const { data: bookmarks } = res;
 
         setTodos(bookmarks as BookMark[]);
       });

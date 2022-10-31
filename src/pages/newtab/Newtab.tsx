@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from "react";
 import logo from "@assets/img/logo.svg";
-import "@src/styles/app.css";
 import "@pages/newtab/Newtab.css";
-import { createClient } from "@supabase/supabase-js";
-
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+import "@src/styles/app.css";
+import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
+import { useEffect, useState } from "react";
 
 const Newtab = () => {
   const [todos, setTodos] = useState<BookMark[]>([]);
+  const supabaseClient = useSupabaseClient();
+
+  const user = useUser();
 
   useEffect(() => {
-    supabase
+    supabaseClient
       .from("bookmarks")
       .select("id,name,url")
       .then((res) => {
@@ -22,13 +21,35 @@ const Newtab = () => {
       });
   }, []);
 
+  useEffect(() => {
+    async function test() {
+      // const queryOptions = { active: true, lastFocusedWindow: true };
+      // // `tab` will either be a `tabs.Tab` instance or `undefined`.
+      // const [tab] = await chrome.tabs.query(queryOptions);
+      const res = await chrome.tabs.query({
+        active: true,
+        lastFocusedWindow: true,
+      });
+
+      console.log(res[0].title);
+    }
+
+    test().then();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
+        <p>Hello: {user?.email}</p>
+        <button
+          onClick={async () => {
+            await supabaseClient.auth.signOut();
+          }}
+        >
+          Logout
+        </button>
         <img src={logo} className="App-logo" alt="logo" />
-        <p className="text-red-500">
-          Edit <code>src/pages/newtab/Newtab.tsx</code> and save to reload.
-        </p>
+
         {todos.map((todo) => (
           <div key={todo.id}>
             <p>{todo.name}</p>

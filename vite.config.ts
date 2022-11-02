@@ -19,6 +19,7 @@ export default defineConfig({
       '@src': root,
       '@assets': assetsDir,
       '@pages': pagesDir,
+      '@test-utils': resolve(__dirname, 'test-utils'),
     },
   },
   plugins: [react(), makeManifest(manifest), customDynamicImport()],

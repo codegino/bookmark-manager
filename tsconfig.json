@@ -19,7 +19,8 @@
     "paths": {
       "@src/*": ["src/*"],
       "@assets/*": ["src/assets/*"],
-      "@pages/*": ["src/pages/*"]
+      "@pages/*": ["src/pages/*"],
+      "@test-utils/*": ["test-utils/*"]
     }
   },
   "include": ["src", "utils", "vite.config.ts", "node_modules/@types"]

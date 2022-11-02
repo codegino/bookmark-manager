@@ -23,7 +23,7 @@ export default {
   // collectCoverageFrom: undefined,
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
+  coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -31,7 +31,7 @@ export default {
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: "v8",
+  coverageProvider: 'v8',
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -82,9 +82,10 @@ export default {
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    "^@src(.*)$": "<rootDir>/src$1",
-    "^@assets(.*)$": "<rootDir>/src/assets$1",
-    "^@pages(.*)$": "<rootDir>/src/pages$1",
+    '^@src(.*)$': '<rootDir>/src$1',
+    '^@assets(.*)$': '<rootDir>/src/assets$1',
+    '^@pages(.*)$': '<rootDir>/src/pages$1',
+    '^@test-utils(.*)$': '<rootDir>/test-utils$1',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -97,7 +98,7 @@ export default {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-  preset: "ts-jest",
+  preset: 'ts-jest',
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -129,10 +130,11 @@ export default {
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  setupFiles: ["./test-utils/jest.setup.js"],
+  setupFiles: ['./test-utils/jest.setup.js'],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   // setupFilesAfterEnv: [],
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
@@ -141,7 +143,7 @@ export default {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: "jsdom",
+  testEnvironment: 'jsdom',
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -157,10 +159,10 @@ export default {
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   testPathIgnorePatterns: [
-    "<rootDir>/node_modules/",
-    "<rootDir>/test-utils/",
-    "<rootDir>/vite.config.ts",
-    "<rootDir>/jest.config.js",
+    '<rootDir>/node_modules/',
+    '<rootDir>/test-utils/',
+    '<rootDir>/vite.config.ts',
+    '<rootDir>/jest.config.js',
   ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
@@ -179,6 +181,9 @@ export default {
   // timers: "real",
 
   // A map from regular expressions to paths to transformers
+  transform: {
+    '.+\\.(css|styl|less|sass|scss)$': 'jest-css-modules-transform',
+  },
   // transform: {
   //   // Use babel-jest to transpile tests with the next/babel preset
   //   // https://jestjs.io/docs/configuration#transform-objectstring-pathtotransformer--pathtotransformer-object

@@ -1,2 +1,3 @@
 // Do what you need to set up your test
-console.log("setup test: jest.setup.js");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+Object.assign(global, require('jest-chrome'));

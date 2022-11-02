@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import logo from "@assets/img/logo.svg";
+import React, { useEffect, useState } from 'react';
+import logo from '@assets/img/logo.svg';
 
 export default function Popup(): JSX.Element {
   const [value, setValue] = useState(() =>
-    localStorage.getItem("gino:testing")
+    localStorage.getItem('gino:testing')
   );
 
   useEffect(() => {

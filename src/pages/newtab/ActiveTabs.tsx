@@ -1,28 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 const ActiveTabs = () => {
   const [tabs, setTabs] = useState<chrome.tabs.Tab[]>([]);
+  const supabase = useSupabaseClient();
+  const user = useUser();
 
-  useEffect(() => {
+  const updateActiveTabs = useCallback(() => {
     chrome.tabs.query({}, (tabs) => {
-      console.log(tabs);
       setTabs(
         tabs.filter((tab) => !['Extensions', 'New tab'].includes(tab.title))
       );
     });
   }, []);
 
+  useEffect(updateActiveTabs, []);
+
+  useEffect(() => {
+    chrome.tabs.onRemoved.addListener(updateActiveTabs);
+    chrome.tabs.onUpdated.addListener(updateActiveTabs);
+  }, []);
+
   return (
-    <section className="w-[65px] p-4 active-tabs-container hover:w-[300px] transition-all overflow-y-auto h-screen">
+    <section className="w-[65px] p-4 active-tabs-container hover:w-[300px] transition-all overflow-x-hidden overflow-y-auto h-screen">
       <h2 className="text-3xl truncate">Active Tabs</h2>
       {tabs.map((tab) => {
         return (
-          <div
-            key={tab.id}
-            className="p-2 text-left"
-            role="button"
-            tabIndex={0}
-          >
+          <div key={tab.id} className="p-2 text-left" role="button">
             <div className="flex">
               <img
                 height={24}
@@ -34,6 +38,33 @@ const ActiveTabs = () => {
               <div className="text-xl truncate">{tab.title}</div>
             </div>
             <div className="truncate">{tab.url}</div>
+            <button
+              onClick={async () => {
+                await chrome.tabs.remove(tab.id);
+              }}
+            >
+              Remove
+            </button>
+            <button
+              onClick={async () => {
+                try {
+                  const { data, error } = await supabase
+                    .from('bookmarks')
+                    .insert([
+                      {
+                        title: tab.title,
+                        url: tab.url,
+                        favIconUrl: tab.favIconUrl,
+                        user_id: user.id,
+                      },
+                    ]);
+                } catch (error) {
+                  console.error(error);
+                }
+              }}
+            >
+              Add
+            </button>
           </div>
         );
       })}

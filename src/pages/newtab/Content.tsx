@@ -26,7 +26,7 @@ const Content = () => {
   }, []);
 
   return (
-    <div className="flex-1 App-header">
+    <div className="flex-1 App-header h-screen overflow-auto">
       <p>Hello: {user?.email}</p>
       <button
         onClick={async () => {
@@ -38,29 +38,47 @@ const Content = () => {
       <hr />
       <br />
 
-      {todos.map((tab) => (
-        <div
-          className="flex flex-col"
-          key={tab.id}
-          role="button"
-          tabIndex={0}
-          onClick={async () => {
-            await chrome.tabs.create({
-              url: tab.url,
-            });
-          }}
-        >
+      {todos.map((todo) => (
+        <div className="flex flex-col" key={todo.id} role="button">
           <div className="flex">
             <img
               height={24}
               width={24}
-              src={tab.favIconUrl}
-              alt={tab.title}
+              src={todo.favIconUrl}
+              alt={todo.title}
               className="inline-block mr-2 max-w-[24px] max-h-[24px]"
             />
-            <div className="text-xl truncate">{tab.title}</div>
+            <div className="text-xl truncate">{todo.title}</div>
           </div>
-          <div className="truncate text-lg">{tab.url}</div>
+          <div className="truncate text-lg">{todo.url}</div>
+          <button
+            onClick={async () => {
+              await chrome.tabs.create({
+                url: todo.url,
+                active: false,
+              });
+            }}
+          >
+            Open
+          </button>
+          <button
+            onClick={async () => {
+              try {
+                await supabaseClient
+                  .from('bookmarks')
+                  .delete()
+                  .eq('id', todo.id);
+
+                setTodos((_todos) =>
+                  _todos.filter((_todo) => todo.id !== _todo.id)
+                );
+              } catch (error) {
+                console.error(error);
+              }
+            }}
+          >
+            Delete
+          </button>
         </div>
       ))}
     </div>

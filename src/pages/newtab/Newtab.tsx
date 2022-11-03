@@ -1,7 +1,7 @@
 import '@pages/newtab/Newtab.css';
 import '@src/styles/app.css';
 import ActiveTabs from './ActiveTabs';
-import Content from './Content';
+import Content from './BookmarkedSection';
 
 const Newtab = () => {
   return (

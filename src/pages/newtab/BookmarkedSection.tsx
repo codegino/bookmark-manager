@@ -17,8 +17,6 @@ const Content = () => {
       .then((res) => {
         const { data: groups } = res;
 
-        console.log(groups);
-
         if (groups) {
           setGroups(groups as unknown as BookMarkGroup[]);
         }

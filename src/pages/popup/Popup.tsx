@@ -16,8 +16,6 @@ export default function Popup(): JSX.Element {
         lastFocusedWindow: true,
       });
 
-      console.log(res[0].title);
-
       setValue(res[0].title);
     }
 

@@ -1,13 +1,15 @@
 import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react';
 import React, { useCallback, useEffect, useState } from 'react';
 
+const DEFAULT_GROUP_ID = 1;
+
 const ActiveTabs = () => {
   const [tabs, setTabs] = useState<chrome.tabs.Tab[]>([]);
   const supabase = useSupabaseClient();
   const user = useUser();
 
   const updateActiveTabs = useCallback(() => {
-    chrome.tabs.query({}, (tabs) => {
+    chrome.tabs.query({ currentWindow: true }, (tabs) => {
       setTabs(
         tabs.filter((tab) => !['Extensions', 'New tab'].includes(tab.title))
       );
@@ -22,7 +24,7 @@ const ActiveTabs = () => {
   }, []);
 
   return (
-    <section className="w-[65px] p-4 active-tabs-container hover:w-[300px] transition-all overflow-x-hidden overflow-y-auto h-screen">
+    <section className="p-4 active-tabs-container w-[300px] transition-all overflow-x-hidden overflow-y-auto h-screen">
       <h2 className="text-3xl truncate">Active Tabs</h2>
       {tabs.map((tab) => {
         return (
@@ -56,6 +58,7 @@ const ActiveTabs = () => {
                         url: tab.url,
                         favIconUrl: tab.favIconUrl,
                         user_id: user.id,
+                        group_id: DEFAULT_GROUP_ID,
                       },
                     ]);
                 } catch (error) {

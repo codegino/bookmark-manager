@@ -952,10 +952,10 @@
   resolved "https://registry.yarnpkg.com/@supabase/auth-helpers-react/-/auth-helpers-react-0.3.1.tgz#815493a294662c56b83c7dd51692dacd24329342"
   integrity sha512-g3SFv08Dz9FapNif/ZY1b7qKGlMJDyTLSayHBz3kb3FuYxg7aLWgQtydDhm5AGbc0XtvpIBuhGTIOVevwpdosA==
 
-"@supabase/auth-ui-react@0.2.6":
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/@supabase/auth-ui-react/-/auth-ui-react-0.2.6.tgz#5ca41b9ef9cf5f52fbad0d67af56cd56f4f79961"
-  integrity sha512-N2qxgsjxPQZPdDotVumzruj4RHaKNFb9ZRecttMeGOvrYFbMWRQVpWT/rYkTPsRW2phKiGXQlMwha6YxUE+t6Q==
+"@supabase/auth-ui-react@0.2.8":
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/@supabase/auth-ui-react/-/auth-ui-react-0.2.8.tgz#66f30565d1797bccc6c715de2486dc38e050ac0c"
+  integrity sha512-CfN9Zt2t1PMfri8htLCFYYIWho6F15ZvbWICE3RuOZ348z1P15iP6scjxB3704Jbu334Q+ykCQP+UzdnB7cXHQ==
   dependencies:
     "@stitches/core" "^1.2.8"
     "@stitches/react" "^1.2.8"

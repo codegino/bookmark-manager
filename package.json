@@ -43,7 +43,7 @@
     "jest-chrome": "^0.8.0",
     "jest-css-modules-transform": "4.4.2",
     "jest-environment-jsdom": "29.7.0",
-    "nodemon": "3.1.0",
+    "nodemon": "3.1.7",
     "postcss": "8.4.38",
     "prettier": "3.2.5",
     "tailwindcss": "3.4.3",

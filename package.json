@@ -46,7 +46,7 @@
     "nodemon": "3.1.9",
     "postcss": "8.4.47",
     "prettier": "3.3.3",
-    "tailwindcss": "3.4.14",
+    "tailwindcss": "3.4.17",
     "ts-jest": "29.2.5",
     "typescript": "5.0.4",
     "vite": "4.5.5"

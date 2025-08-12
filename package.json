@@ -37,7 +37,7 @@
     "eslint": "9.21.0",
     "eslint-config-prettier": "9.1.2",
     "eslint-plugin-prettier": "5.2.3",
-    "eslint-plugin-react": "7.37.4",
+    "eslint-plugin-react": "7.37.5",
     "fs-extra": "11.3.0",
     "jest": "29.7.0",
     "jest-chrome": "^0.8.0",

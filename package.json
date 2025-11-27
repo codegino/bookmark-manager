@@ -14,7 +14,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@supabase/auth-helpers-react": "0.3.1",
+    "@supabase/auth-helpers-react": "0.15.0",
     "@supabase/auth-ui-react": "0.2.6",
     "@supabase/supabase-js": "2.7.0",
     "@testing-library/user-event": "14.4.3",

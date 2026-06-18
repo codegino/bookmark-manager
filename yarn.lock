@@ -1341,10 +1341,10 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
-"@types/chrome@0.1.31":
-  version "0.1.31"
-  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.1.31.tgz#e8d1e7e614d5ee97db208fe843e46bc6ccdee0f0"
-  integrity sha512-8fC9t02LRdqlSQ9bktaiLjP0NKujPNPaCKPfXxfIjZ35A9u831XY0pt0UEf2oup2SjcUEAaIYOB8mzJ51jhjmA==
+"@types/chrome@0.1.43":
+  version "0.1.43"
+  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.1.43.tgz#183d5e5c77d2a869bd24190d8944be8552a73f4e"
+  integrity sha512-ukH/HhmR6ht+UTX3PLUWJxgJ/RQcK2Foj4lBzsF24SIWsXgqhGuXqjd8FFuwioPP7d/JUKLM4g8GZxw3F4HTcA==
   dependencies:
     "@types/filesystem" "*"
     "@types/har-format" "*"
